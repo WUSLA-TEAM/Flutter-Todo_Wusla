@@ -1,16 +1,7 @@
 # wusla
 
-A new Flutter project.
+Wusla is a Compny Name WIch work on the Software development to make the world developed
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This is the project of the WuslaApp wich can easily started with Todo app. Am as the owner learning flutter and working on the Wusla App to make the App Better
