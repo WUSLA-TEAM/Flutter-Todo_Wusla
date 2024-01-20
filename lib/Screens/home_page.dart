@@ -3,7 +3,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:wusla/components/dilog_box.dart';
 import 'package:wusla/components/todo_title.dart';
 import 'package:wusla/data/databse.dart';
-import 'package:wusla/main.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.themeColor}) : super(key: key);
@@ -51,12 +50,16 @@ class _HomeState extends State<Home> {
   }
 
   void saveNewTask() {
-    setState(() {
-      db.todoList.add([_controller.text, false]);
-      _controller.clear(); // Clear the text controller
-    });
-    Navigator.of(context).pop(); // Close the dialog
-    db.updateDatabse();
+    if (_controller.text.isNotEmpty) {
+      setState(() {
+        db.todoList.add([_controller.text, false]);
+        _controller.clear();
+      });
+      Navigator.of(context).pop();
+      db.updateDatabse();
+    } else {
+      //add new feture to make fun
+    }
   }
 
   void createNewTask() {
@@ -85,20 +88,26 @@ class _HomeState extends State<Home> {
     return MaterialApp(
       theme: _isDarkMode ? ThemeData.dark() : ThemeData.light(),
       home: Scaffold(
-        backgroundColor: _isDarkMode ? Colors.grey[700] : Colors.yellow[200],
+        backgroundColor: Color(0xFF2BB7E3),
         appBar: AppBar(
-          backgroundColor: widget.themeColor,
+          backgroundColor: Color(0xFF2BB7E3),
           title: const Center(
             child: Text(
               'To Do',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white),
             ),
           ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: createNewTask,
-          backgroundColor: Colors.amber[300],
-          child: const Icon(Icons.add),
+          backgroundColor: Color(0xFF351A87),
+          child: const Icon(
+            Icons.add,
+            color: Color(0xFFFFFFFF),
+          ),
         ),
         body: ListView.builder(
           itemCount: db.todoList.length,
