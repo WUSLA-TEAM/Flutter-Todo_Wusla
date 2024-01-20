@@ -23,8 +23,10 @@ class ToDoTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.yellow[500],
+            borderRadius: taskCompleted
+                ? BorderRadius.circular(20)
+                : BorderRadius.circular(8),
+            color: Color.fromARGB(255, 136, 223, 250),
           ),
           child: Slidable(
             endActionPane: ActionPane(
@@ -34,10 +36,6 @@ class ToDoTile extends StatelessWidget {
                 SlidableAction(
                   onPressed: deleteFunction,
                   icon: Icons.delete,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
-                  ),
                   backgroundColor: Colors.red.shade800,
                 )
               ],
@@ -52,7 +50,7 @@ class ToDoTile extends StatelessWidget {
                   Checkbox(
                     value: taskCompleted,
                     onChanged: onChanged,
-                    activeColor: Colors.yellow[800],
+                    activeColor: Color(0xFF351A87),
                   ),
                   SizedBox(width: 12),
                   Expanded(
@@ -62,6 +60,7 @@ class ToDoTile extends StatelessWidget {
                         decoration: taskCompleted
                             ? TextDecoration.lineThrough
                             : TextDecoration.none,
+                        color: Color(0xFF351A87),
                       ),
                     ),
                   ),

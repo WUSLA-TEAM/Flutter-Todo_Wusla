@@ -16,10 +16,15 @@ class DialogBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.yellow[400],
+      contentPadding: EdgeInsets.all(20),
+      backgroundColor: Color(0xFF351A87),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
       content: Container(
-        height: 170,
-        padding: const EdgeInsets.all(16),
+        height: 200,
+        width: 900,
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),
         ),
@@ -28,11 +33,29 @@ class DialogBox extends StatelessWidget {
           children: [
             // TextField with the provided TextEditingController
             TextField(
+              style: const TextStyle(
+                  color: Color(0xFFFFFFFF), fontWeight: FontWeight.bold),
               decoration: InputDecoration(
-                border: OutlineInputBorder(
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.blue),
+                ),
+                focusedBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color(0xFF2BB7E3),
+                    width: 2,
+                  ), // Wider for focus
+                ),
+                contentPadding: const EdgeInsets.all(12),
+                border: UnderlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    style: BorderStyle.solid,
+                    color: Colors.blue,
+                    width: 2,
+                  ),
                 ),
                 hintText: 'Enter your text',
+                hintStyle: const TextStyle(color: Colors.white),
               ),
               controller: controller, // Use the provided controller
             ),
