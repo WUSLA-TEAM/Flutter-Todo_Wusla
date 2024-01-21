@@ -5,9 +5,7 @@ import 'package:wusla/components/todo_title.dart';
 import 'package:wusla/data/databse.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key, required this.themeColor}) : super(key: key);
-
-  final Color themeColor;
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
