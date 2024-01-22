@@ -19,10 +19,10 @@ class MyButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       onPressed: onPressed,
-      color: Color(0xFF2BB7E3),
+      color: Color(0xFF351A87),
       child: Text(
         text,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       ),
     );
   }

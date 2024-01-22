@@ -27,7 +27,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
         padding: EdgeInsets.all(40),
         height: _bottomSheetHeight,
         decoration: const BoxDecoration(
-          color: Color(0xFF351A87),
+          color: Color(0xFF2BB7E3),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -48,7 +48,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                 ),
                 focusedBorder: const UnderlineInputBorder(
                   borderSide: BorderSide(
-                    color: Color(0xFF2BB7E3),
+                    color: Color(0xFF351A87),
                     width: 2,
                   ), // Wider for focus
                 ),
