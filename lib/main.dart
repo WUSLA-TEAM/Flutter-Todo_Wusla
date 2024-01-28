@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:wusla/theme/light_theme.dart';
 import 'Screens/home_page.dart';
 
 void main() async {
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: lightMode,
       home: Home(),
     );
   }

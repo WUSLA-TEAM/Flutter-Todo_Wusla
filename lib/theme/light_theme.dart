@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-ThemeData lightMmode = ThemeData(
+ThemeData lightMode = ThemeData(
   colorScheme: ColorScheme.light(
-    primary: Color(0xFF2BB7E3),
-    secondary: Color(0xFF351A87),
-    tertiary: Color(0xFF242424),
-    background: Color(0xFFFEFEFE),
+    primary: Color(0xFFfac689),
+    secondary: Color(0xFFe3645a),
+    tertiary: Color(0xFFfcffff),
+    tertiaryContainer: Color(0xFF242424),
+    inversePrimary: Color.fromARGB(255, 252, 172, 81),
   ),
 );

@@ -26,8 +26,8 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
       child: Container(
         padding: EdgeInsets.all(40),
         height: _bottomSheetHeight,
-        decoration: const BoxDecoration(
-          color: Color(0xFF2BB7E3),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.secondary,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -38,31 +38,34 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
           children: [
             // TextField with the provided TextEditingController
             TextField(
-              style: const TextStyle(
-                color: Color(0xFFFFFFFF),
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.tertiary,
                 fontWeight: FontWeight.bold,
+                fontSize: 19,
               ),
               decoration: InputDecoration(
-                enabledBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blue),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide:
+                      BorderSide(color: Theme.of(context).colorScheme.tertiary),
                 ),
-                focusedBorder: const UnderlineInputBorder(
+                focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
-                    color: Color(0xFF351A87),
+                    color: Theme.of(context).colorScheme.primary,
                     width: 2,
                   ), // Wider for focus
                 ),
                 contentPadding: const EdgeInsets.all(12),
                 border: UnderlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(
+                  borderSide: BorderSide(
                     style: BorderStyle.solid,
-                    color: Colors.blue,
+                    color: Theme.of(context).colorScheme.secondary,
                     width: 2,
                   ),
                 ),
                 hintText: 'Enter your text',
-                hintStyle: const TextStyle(color: Colors.white),
+                hintStyle:
+                    TextStyle(color: Theme.of(context).colorScheme.tertiary),
               ),
               controller: widget.controller, // Use the provided controller
             ),

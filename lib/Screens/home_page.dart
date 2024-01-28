@@ -4,6 +4,7 @@ import 'package:wusla/components/bottom_sheet.dart';
 import 'package:wusla/components/dilog_box.dart';
 import 'package:wusla/components/todo_title.dart';
 import 'package:wusla/data/databse.dart';
+import 'package:wusla/theme/light_theme.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -36,7 +37,6 @@ class _HomeState extends State<Home> {
   }
 
   // Toggle dark mode
-  final bool _isDarkMode = false;
 
   // List todoList = [
   //   ["Make To DO", false],
@@ -112,32 +112,31 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: _isDarkMode ? ThemeData.dark() : ThemeData.light(),
+      theme: lightMode, // Apply your custom theme here
       home: GestureDetector(
         onTap: () {
-          // Close the keyboard when tapping outside of the text field or bottom sheet
           FocusScope.of(context).requestFocus(FocusNode());
         },
         child: Scaffold(
-          backgroundColor: Color(0xFF2BB7E3),
+          backgroundColor: Theme.of(context).colorScheme.primary,
           appBar: AppBar(
-            backgroundColor: Color(0xFF2BB7E3),
-            title: const Center(
+            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+            title: Center(
               child: Text(
                 'To Do',
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
-                    color: Colors.white),
+                    color: Theme.of(context).colorScheme.tertiary),
               ),
             ),
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: _showBottomSheet,
-            backgroundColor: Color(0xFF351A87),
-            child: const Icon(
+            backgroundColor: Theme.of(context).colorScheme.secondary,
+            child: Icon(
               Icons.add,
-              color: Color(0xFFFFFFFF),
+              color: Theme.of(context).colorScheme.tertiary,
             ),
           ),
           body: ListView.builder(
@@ -157,11 +156,4 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-}
-
-class TodoItem {
-  final String name;
-  bool isCompleted;
-
-  TodoItem(this.name, this.isCompleted);
 }

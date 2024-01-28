@@ -17,7 +17,7 @@ class DialogBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       contentPadding: EdgeInsets.all(20),
-      backgroundColor: Color(0xFF351A87),
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
