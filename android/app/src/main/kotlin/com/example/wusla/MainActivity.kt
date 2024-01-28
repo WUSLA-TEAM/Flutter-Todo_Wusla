@@ -1,4 +1,4 @@
-package com.example.wusla
+package com.wusla.wusla
 
 import io.flutter.embedding.android.FlutterActivity
 
