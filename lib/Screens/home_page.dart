@@ -1,47 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:wusla/components/bottom_sheet.dart';
-import 'package:wusla/components/dilog_box.dart';
+import 'package:wusla/components/fullScreen_box.dart';
 import 'package:wusla/components/todo_title.dart';
 import 'package:wusla/data/databse.dart';
 import 'package:wusla/theme/light_theme.dart';
 
 class Home extends StatefulWidget {
-  const Home({
-    Key? key,
-  }) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  // Text controller
   final _controller = TextEditingController();
-
-  //box
   final _mybox = Hive.box('mybox');
   ToDoDatabse db = ToDoDatabse();
 
   @override
   void initState() {
-    //1st time oppening
+    super.initState();
     if (_mybox.get("TODOLIST") == null) {
       db.createInitialData();
     } else {
-      //not first time
       db.loadData();
     }
-    // TODO: implement initState
-    super.initState();
   }
-
-  // Toggle dark mode
-
-  // List todoList = [
-  //   ["Make To DO", false],
-  //   ["app", true],
-  // ];
 
   void checkboxChanged(bool? value, int index) {
     setState(() {
@@ -59,39 +44,16 @@ class _HomeState extends State<Home> {
       Navigator.of(context).pop();
       db.updateDatabse();
     } else {
-      //add new feture to make fun
+      // Handle the case when the text is empty
     }
   }
 
-  void createNewTask() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return DialogBox(
-          controller: _controller,
-          onSave: saveNewTask,
-          onCancel: () => Navigator.of(context).pop(),
-        );
-      },
-    );
-  }
-
-  //delete task
   void deleteTask(int index) {
     setState(() {
       db.todoList.removeAt(index);
     });
     db.updateDatabse();
   }
-
-  // Future _displayBottomSheet(BuildContext context) {
-  //   return showModalBottomSheet(
-  //     context: context,
-  //     builder: (context) => Container(
-  //       height: 200,
-  //     ),
-  //   );
-  // }
 
   void _showBottomSheet() {
     showModalBottomSheet(
@@ -101,18 +63,33 @@ class _HomeState extends State<Home> {
           controller: _controller,
           onSave: saveNewTask,
           onCancel: () {
-            // Handle Cancel button pressed
-            Navigator.of(context).pop(); // Close the bottom sheet
+            Navigator.of(context).pop();
           },
         );
       },
     );
   }
 
+  void _navigateToFullScreen() {
+    // Navigate to another screen when the FAB is pressed
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FullScreen(
+          controller: _controller,
+          onSave: saveNewTask,
+          onCancel: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: lightMode, // Apply your custom theme here
+      theme: lightMode,
       home: GestureDetector(
         onTap: () {
           FocusScope.of(context).requestFocus(FocusNode());
@@ -125,14 +102,15 @@ class _HomeState extends State<Home> {
               child: Text(
                 'To Do',
                 style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    color: Theme.of(context).colorScheme.tertiary),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  color: Theme.of(context).colorScheme.tertiary,
+                ),
               ),
             ),
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: _showBottomSheet,
+            onPressed: _navigateToFullScreen,
             backgroundColor: Theme.of(context).colorScheme.secondary,
             child: Icon(
               Icons.add,
