@@ -52,6 +52,7 @@ class ToDoTile extends StatelessWidget {
                     value: taskCompleted,
                     onChanged: onChanged,
                     activeColor: Theme.of(context).colorScheme.primary,
+                    checkColor: Theme.of(context).colorScheme.secondary,
                   ),
                   SizedBox(width: 12),
                   Expanded(
