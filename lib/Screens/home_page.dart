@@ -55,21 +55,6 @@ class _HomeState extends State<Home> {
     db.updateDatabse();
   }
 
-  void _showBottomSheet() {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return BottomSheetContent(
-          controller: _controller,
-          onSave: saveNewTask,
-          onCancel: () {
-            Navigator.of(context).pop();
-          },
-        );
-      },
-    );
-  }
-
   void _navigateToFullScreen() {
     // Navigate to another screen when the FAB is pressed
     Navigator.push(
@@ -95,23 +80,23 @@ class _HomeState extends State<Home> {
           FocusScope.of(context).requestFocus(FocusNode());
         },
         child: Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.primary,
+          backgroundColor: Theme.of(context).colorScheme.tertiary,
           appBar: AppBar(
-            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+            backgroundColor: Theme.of(context).colorScheme.tertiary,
             title: Center(
               child: Text(
                 'To Do',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
-                  color: Theme.of(context).colorScheme.tertiary,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
             ),
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: _navigateToFullScreen,
-            backgroundColor: Theme.of(context).colorScheme.secondary,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             child: Icon(
               Icons.add,
               color: Theme.of(context).colorScheme.tertiary,

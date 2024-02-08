@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:wusla/components/moredetails.dart';
 
 class FullScreen extends StatelessWidget {
   final VoidCallback onSave;
   final VoidCallback onCancel;
   final TextEditingController controller;
 
-  FullScreen(
-      {Key? key,
-      required this.onCancel,
-      required this.onSave,
-      required this.controller})
-      : super(key: key);
+  FullScreen({
+    Key? key,
+    required this.onCancel,
+    required this.onSave,
+    required this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primary,
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
         leading: IconButton(
           icon: Icon(
             Icons.close,
@@ -27,17 +28,29 @@ class FullScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: onSave,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute<void>(
+              builder: (BuildContext context) => MoreDetails(
+                text: controller.text,
+                onCancel: onCancel,
+                onSave: onSave,
+              ),
+            ),
+          );
+        },
         child: Icon(
-          Icons.arrow_forward_ios_rounded,
+          Icons.check,
+          color: Theme.of(context).colorScheme.tertiary,
         ),
-        backgroundColor: Theme.of(context).colorScheme.secondary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Center(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextField(
@@ -64,6 +77,9 @@ class FullScreen extends StatelessWidget {
                     ),
                   ),
                   hintText: 'Enter your text',
+                  hintStyle: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
                 ),
                 controller: controller, // Use the provided controller
               ),
