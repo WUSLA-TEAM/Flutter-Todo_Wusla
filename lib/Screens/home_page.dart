@@ -80,16 +80,17 @@ class _HomeState extends State<Home> {
           FocusScope.of(context).requestFocus(FocusNode());
         },
         child: Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.tertiary,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           appBar: AppBar(
-            backgroundColor: Theme.of(context).colorScheme.tertiary,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             title: Center(
               child: Text(
                 'To Do',
                 style: TextStyle(
                   fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.w100,
+                  fontFamily: 'futur',
+                  color: Theme.of(context).colorScheme.tertiary,
                 ),
               ),
             ),
