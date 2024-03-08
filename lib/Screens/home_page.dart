@@ -97,10 +97,11 @@ class _HomeState extends State<Home> {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: _navigateToFullScreen,
-            backgroundColor: Theme.of(context).colorScheme.primary,
+            backgroundColor: Theme.of(context).colorScheme.tertiary,
             child: Icon(
-              Icons.add,
-              color: Theme.of(context).colorScheme.tertiary,
+              Icons.arrow_forward_ios,
+              color: Theme.of(context).colorScheme.primary,
+              size: 18,
             ),
           ),
           body: ListView.builder(

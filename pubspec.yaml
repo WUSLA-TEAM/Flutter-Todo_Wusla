@@ -95,6 +95,22 @@ flutter:
       fonts:
         - asset: fonts/futur.ttf
           style: normal
+    - family: Futura Bold font
+      fonts:
+        - asset: fonts/Futura Bold font.ttf
+          style: normal
+    - family: Futura Heavy font
+      fonts:
+        - asset: fonts/Futura Heavy font.ttf
+          style: normal
+    - family: Futura Light font
+      fonts:
+        - asset: fonts/Futura Light font.ttf
+          style: normal
+    - family: futura medium bt
+      fonts:
+        - asset: fonts/futura medium bt.ttf
+          style: normal
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

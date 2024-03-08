@@ -22,18 +22,21 @@ class _MoreDetailsState extends State<MoreDetails> {
     DateTimeRange selectedDates =
         DateTimeRange(start: DateTime.now(), end: DateTime.now());
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.tertiary,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       floatingActionButton: FloatingActionButton(
         onPressed: widget.onSave,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        shape: RoundedRectangleBorder(
+            side: BorderSide(color: Theme.of(context).colorScheme.tertiary),
+            borderRadius: BorderRadius.circular(8)),
         child: Icon(
           Icons.done_all,
           color: Theme.of(context).colorScheme.tertiary,
         ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Flex(
         direction: Axis.vertical,
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
         // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
@@ -46,7 +49,7 @@ class _MoreDetailsState extends State<MoreDetails> {
                     color: Theme.of(context)
                         .colorScheme
                         .secondary, // Use your desired color
-                    width: 1.0, // Adjust border width as needed
+                    width: 2.0, // Adjust border width as needed
                   ),
                 ),
               ),
@@ -62,50 +65,29 @@ class _MoreDetailsState extends State<MoreDetails> {
               ),
             ),
           ),
-          Container(
-            height: 600,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.secondary,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(50),
-                topRight: Radius.circular(50),
-              ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.drag_handle),
-                SizedBox(
-                  height: 50,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: Theme.of(context).colorScheme.tertiary,
                 ),
-                Padding(
-                  padding: EdgeInsets.all(10),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context).colorScheme.tertiary,
-                    ),
-                    onPressed: () async {
-                      final DateTimeRange? dateTimeRange =
-                          await showDateRangePicker(
-                        context: context,
-                        firstDate: DateTime(2000),
-                        lastDate: DateTime(3000),
-                      );
-                      if (dateTimeRange != null) {
-                        setState(() {
-                          selectedDates = dateTimeRange;
-                        });
-                      }
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("${selectedDates.duration.inDays} days"),
-                      ],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 10, 10),
+                child: Container(
+                  height: 600,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.secondary,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      topRight: Radius.circular(8),
                     ),
                   ),
                 ),
-              ],
+              ),
             ),
           )
         ],
